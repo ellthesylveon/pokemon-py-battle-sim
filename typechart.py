@@ -1,6 +1,3 @@
-
-
-
 strong_type_chart: dict[str, list[str]] = {
     'normal': ['none'],
     'fire': ['grass', 'ice', 'bug', 'steel'],

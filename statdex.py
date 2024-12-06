@@ -1,5 +1,3 @@
-
-
 mew = {
     'name': 'Mew',
     'base stats': {
@@ -10,8 +8,8 @@ mew = {
         'sp.def': 100,
         'spe': 100
     },
-    'types': ['psychic','psychic'],
+    'types': ['psychic', 'psychic'],
     'ability': 'synchronize',
-    'evs': [0,0,0,252,4,252],
-    'ivs': [31,31,31,31,31,31]
+    'evs': [0, 0, 0, 252, 4, 252],
+    'ivs': [31, 31, 31, 31, 31, 31]
 }
