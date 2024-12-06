@@ -3,16 +3,17 @@ import random
 
 import statdex
 from movedex import *
+from typechart import *
 
 
 class Pokemon:
-    def __init__(self, name: str, level: int, base_stats: dict[str, int], types: list[str],
+    def __init__(self, name: str, level: int, base_stats: dict[str, int], type_: list[str],
                  ability: str, evs: list[int], ivs: list[int], nature: str, hp: int | None,
                  stats: list[int], move_list: list[Move]):
         self.name = name
         self.level = level
         self.base_stats = base_stats
-        self.types = types
+        self.type_ = type_
         self.ability = ability
         self.evs = evs
         self.ivs = ivs
@@ -56,11 +57,6 @@ class Pokemon:
             if damage > target.hp: damage = target.hp
             target.hp -= damage
             print(f'The enemy {target.name} lost {round(damage / target.stats[0] * 100)}% of its HP!')
-
-
-class Calculator:
-    def __init__(self, ):
-        ...
 
 
 def battle(player: Pokemon, opponent: Pokemon) -> None:
@@ -119,13 +115,10 @@ def move_select(player: Pokemon) -> Move:
 
 
 def main() -> None:
-    player: Pokemon = Pokemon(statdex.mew['name'], 100, statdex.mew['base stats'], statdex.mew['types'],
+    player: Pokemon = Pokemon(statdex.mew['name'], 100, statdex.mew['base stats'], statdex.mew['type'],
                               statdex.mew['ability'], statdex.mew['evs'], statdex.mew['ivs'], 'Hardy', None,
-                              [], [POUND, MEGA_PUNCH, HYPER_VOICE, BOOMBURST])
+                              [], [PSYCHIC, MEGA_PUNCH, HYPER_VOICE, BOOMBURST])
     opponent: Pokemon = player
-    # opponent.calculate_stats()
-    # print(opponent.stats[3])
-    # print(opponent.stats)
     battle(player, opponent)
 
 

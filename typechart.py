@@ -54,3 +54,4 @@ immunity_type_chart: dict[str, list[str]] = {
     'electric': ['paralysis'],
     'fire': ['burn']
 }
+
