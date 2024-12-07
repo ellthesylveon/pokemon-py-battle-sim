@@ -24,7 +24,7 @@ tornadus: dict[str, any] = {
         'sp. def': 80,
         'spe': 111,
     },
-    'type': ['normal', 'flying'],
+    'type': ['flying'],
     'ability': 'defiant',
     'evs': [0, 0, 0, 252, 4, 252],
     'ivs': [31, 31, 31, 31, 31, 31],

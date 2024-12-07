@@ -89,7 +89,7 @@ class Pokemon:
             elif type_effectiveness < 1:
                 print("It's not very effective...")
 
-            damage_modifier*=type_effectiveness
+            damage_modifier *= type_effectiveness
 
             damage = damage_calc(rel_atk, rel_def, self.level, move.power, damage_modifier)
             if damage > target.hp: damage = target.hp
@@ -127,7 +127,7 @@ def damage_calc(rel_atk: int, rel_def: int, level: int, power: int | float, dama
     damage: int = round(((((((2 * level) / 5) + 2) * power * (rel_atk / rel_def)) / 50) + 2) *
                         (random.randint(85, 100) / 100))
 
-    damage*=damage_modifier
+    damage *= damage_modifier
     return damage
 
 

@@ -80,7 +80,8 @@ expanded_type_chart: dict[str, dict[str, int]] = {
         'steel': 1.0,
         'dragon': 1.0,
         'dark': 1.0,
-        'fairy': 1.0
+        'fairy': 1.0,
+        'electric': 1.0
     },
     'fire': {
         'normal': 1.0,
@@ -99,7 +100,8 @@ expanded_type_chart: dict[str, dict[str, int]] = {
         'steel': 0.5,
         'dragon': 1.0,
         'dark': 1.0,
-        'fairy': 0.5
+        'fairy': 0.5,
+        'electric': 1.0
     },
     'water': {
         'normal': 1.0,
@@ -178,7 +180,8 @@ expanded_type_chart: dict[str, dict[str, int]] = {
         'steel': 1.0,
         'dragon': 1.0,
         'dark': 0.5,
-        'fairy': 2.0
+        'fairy': 2.0,
+        'electric': 1.0
     },
     'poison': {
         'normal': 1.0,
@@ -197,7 +200,8 @@ expanded_type_chart: dict[str, dict[str, int]] = {
         'steel': 1.0,
         'dragon': 1.0,
         'dark': 1.0,
-        'fairy': 0.5
+        'fairy': 0.5,
+        'electric': 1.0
     },
     'ground': {
         'normal': 1.0,
@@ -236,7 +240,8 @@ expanded_type_chart: dict[str, dict[str, int]] = {
         'steel': 2.0,
         'dragon': 1.0,
         'dark': 1.0,
-        'fairy': 1.0
+        'fairy': 1.0,
+        'electric': 1.0
     },
     'psychic': {
         'normal': 1.0,
@@ -255,7 +260,8 @@ expanded_type_chart: dict[str, dict[str, int]] = {
         'steel': 1.0,
         'dragon': 1.0,
         'dark': 2.0,
-        'fairy': 1.0
+        'fairy': 1.0,
+        'electric': 1.0
     },
     'ice': {
         'normal': 1.0,
@@ -274,7 +280,8 @@ expanded_type_chart: dict[str, dict[str, int]] = {
         'steel': 2.0,
         'dragon': 1.0,
         'dark': 1.0,
-        'fairy': 1.0
+        'fairy': 1.0,
+        'electric': 1.0
     },
     'bug': {
         'normal': 1.0,
@@ -293,7 +300,8 @@ expanded_type_chart: dict[str, dict[str, int]] = {
         'steel': 1.0,
         'dragon': 1.0,
         'dark': 1.0,
-        'fairy': 1.0
+        'fairy': 1.0,
+        'electric': 1.0
     },
     'ghost': {
         'normal': 0.0,
@@ -312,7 +320,8 @@ expanded_type_chart: dict[str, dict[str, int]] = {
         'steel': 1.0,
         'dragon': 1.0,
         'dark': 2.0,
-        'fairy': 1.0
+        'fairy': 1.0,
+        'electric': 1.0,
     },
     'steel': {
         'normal': 0.5,
@@ -331,7 +340,8 @@ expanded_type_chart: dict[str, dict[str, int]] = {
         'steel': 0.5,
         'dragon': 0.5,
         'dark': 1.0,
-        'fairy': 0.5
+        'fairy': 0.5,
+        'electric': 1.0
     },
     'dragon': {
         'normal': 1.0,
@@ -370,7 +380,8 @@ expanded_type_chart: dict[str, dict[str, int]] = {
         'steel': 1.0,
         'dragon': 1.0,
         'dark': 0.5,
-        'fairy': 2.0
+        'fairy': 2.0,
+        'electric': 1.0
     },
     'fairy': {
         'normal': 1.0,
@@ -389,7 +400,8 @@ expanded_type_chart: dict[str, dict[str, int]] = {
         'steel': 2.0,
         'dragon': 0.0,
         'dark': 0.5,
-        'fairy': 1.0
+        'fairy': 1.0,
+        'electric': 1.0
     },
     'electric': {
         'normal': 1.0,
