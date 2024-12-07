@@ -41,7 +41,7 @@ class Pokemon:
 
             # Combine with the type chart of the 2nd type
             for t in type_list:
-                type_chart.t *= second_type_chart.t
+                type_chart[t] *= second_type_chart[t]
 
         # Here abilities should be factored into the type chart but we can implement that later
 
@@ -124,8 +124,8 @@ def battle(player: Pokemon, opponent: Pokemon) -> None:
 
 
 def damage_calc(rel_atk: int, rel_def: int, level: int, power: int | float, damage_modifier: float) -> int:
-    damage: int = round(
-        ((((((2 * level) / 5) + 2) * power * (rel_atk / rel_def)) / 50) + 2) * (random.randint(85, 100) / 100))
+    damage: int = round(((((((2 * level) / 5) + 2) * power * (rel_atk / rel_def)) / 50) + 2) *
+                        (random.randint(85, 100) / 100))
 
     damage*=damage_modifier
     return damage
@@ -157,8 +157,13 @@ def move_select(player: Pokemon) -> Move:
 def main() -> None:
     player: Pokemon = Pokemon(statdex.mew['name'], 100, statdex.mew['base stats'], statdex.mew['type'],
                               statdex.mew['ability'], statdex.mew['evs'], statdex.mew['ivs'], 'Hardy', None,
-                              [], [PSYCHIC, DARK_PULSE, HYPER_VOICE, BOOMBURST])
-    opponent: Pokemon = player
+                              [], [PSYCHIC, DARK_PULSE, EARTHQUAKE, BOOMBURST])
+    opponent: Pokemon = Pokemon(statdex.tornadus['name'], 100, statdex.tornadus['base stats'], statdex.tornadus['type'],
+                              statdex.tornadus['ability'], statdex.tornadus['evs'], statdex.tornadus['ivs'], 'Hardy', None,
+                              [], [PSYCHIC, DARK_PULSE, EARTHQUAKE, BOOMBURST])
+
+    #opponent: Pokemon = player
+
     battle(player, opponent)
 
 
