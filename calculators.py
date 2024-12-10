@@ -1,12 +1,14 @@
 import math as mt
 import random
 
+
 def damage_calc(rel_atk: int, rel_def: int, level: int, power: int | float, damage_modifier: float) -> int:
     damage: int = round(((((((2 * level) / 5) + 2) * power * (rel_atk / rel_def)) / 50) + 2) *
                         (random.randint(85, 100) / 100))
 
     damage *= damage_modifier
     return damage
+
 
 def calculate_stats(pokemon: dict[str, str | int | list[str | int]]) -> dict[str, str | int | list[str | int]]:
     temp_base = [pokemon['base_hp'], pokemon['base_atk'], pokemon['base_def'], pokemon['base_spatk'], pokemon['base_spdef'], pokemon['base_spe']]

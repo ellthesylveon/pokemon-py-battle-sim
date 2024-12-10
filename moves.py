@@ -43,3 +43,14 @@ EARTHQUAKE = {
     'priority': 0,
     'flags': [],
 }
+
+FEINT = {
+    'name': 'Feint',
+    'power': 30,
+    'accuracy': 100,
+    'type_': 'normal',
+    'category': 'physical',
+    'power_points': 16,
+    'priority': 2,
+    'flags': ['breaks_protect']
+}

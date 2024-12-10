@@ -4,12 +4,14 @@ from typechart import *
 from calculators import *
 from moves import *
 
+
 def is_alive(pokemon: dict[str, str | int | list[str|int]]) -> bool:
     if pokemon['current_hp'] > 0:
         return True
     else:
         print(f'{pokemon['name']} fainted!')
         return False
+
 
 def create_type_chart(pokemon: dict[str, str | int | list[str|int]]) -> dict[str, int]:
     type_chart = copy.deepcopy(expanded_type_chart[pokemon['type_'][0]])
@@ -21,6 +23,7 @@ def create_type_chart(pokemon: dict[str, str | int | list[str|int]]) -> dict[str
     # Here abilities should be factored into the type chart but we can implement that later
 
     return type_chart
+
 
 def battle(player: dict[str, str | int | list[str | int]], opponent: dict[str, str | int | list[str|int]]) -> None:
     calculate_stats(player)
@@ -39,7 +42,7 @@ def battle(player: dict[str, str | int | list[str | int]], opponent: dict[str, s
                          player['moves'][3]]
             for move in player1_move_list:
                 delimiter = ', '
-                move_list_str = 'Pound, Protect, Psychic, Earthquake'
+                move_list_str = 'Feint, Protect, Psychic, Earthquake'
             print(move_list_str)
             user_input = input()
             if user_input == '1':
@@ -60,7 +63,7 @@ def battle(player: dict[str, str | int | list[str | int]], opponent: dict[str, s
                                  opponent['moves'][3]]
             for move in player2_move_list:
                 delimiter = ', '
-                move_list_str = 'Pound, Protect, Psychic, Earthquake'
+                move_list_str = 'Feint, Protect, Psychic, Earthquake'
             print(move_list_str)
             user_input = input()
             if user_input == '1':
@@ -110,8 +113,9 @@ def attack(pokemon: dict[str, str | int | list[str|int]], move: dict[str, str | 
     else:
         damage_modifier: float = 1
         if target['is_protected']:
-            print(f'The enemy {target['name']} protected itself!')
-            damage_modifier = 0
+            if 'breaks_protect' not in move['flags']:
+                print(f'The enemy {target['name']} protected itself!')
+                damage_modifier = 0
         else:
             # Apply STAB modifier
             if move['type_'] in pokemon['type_']:

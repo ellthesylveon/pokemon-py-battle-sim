@@ -1,12 +1,17 @@
 import csv
+import os
 
 from moves import *
+
+
+path_to_this_directory = os.path.dirname(os.path.abspath(__file__))
+csv_path = os.path.join(path_to_this_directory, 'pokedex.csv')
 
 def create_pokedex() -> list[dict[str, str | int]]:
     pokedex = []
 
-    print("Loading pokedex data...")
-    file = open("pokedex.csv", "r")
+    print('Loading pokedex data...')
+    file = open(csv_path, 'r')
     reader = csv.reader(file)
     for line in reader:
         dex_entry = {
@@ -28,13 +33,14 @@ def create_pokedex() -> list[dict[str, str | int]]:
 
     file.close()
 
-    print("Pokedex successfully loaded.")
+    print('Pokedex successfully loaded.')
     return pokedex
+
 
 def create_pokemon(pokemon: dict[str, str | int | list[str | int]]) -> dict[str, str | int | list]:
     evs:list[int] = []
     ivs: list[int] = []
-    moves: list[dict[str, str | int | list[str]]] = [POUND, PROTECT, PSYCHIC, EARTHQUAKE]
+    moves: list[dict[str, str | int | list[str]]] = [FEINT, PROTECT, PSYCHIC, EARTHQUAKE]
     while len(ivs) < 6:
         user_input = input('Please enter your pokemon\'s IVs in order of HP, Atk, Def, SpAtk, SpDef, Spe. Leave blank for all 31s. ')
         if user_input == '':
