@@ -13,13 +13,13 @@ POUND = {
 
 PROTECT = {
     'name': 'Protect',
-    'power': None,
-    'accuracy': None,
+    'power': 0,
+    'accuracy': 100,
     'type_': 'normal',
     'category': 'status',
     'power_points': 16,
     'priority': 4,
-    'flags': [],
+    'flags': ['protects'],
 }
 
 PSYCHIC = {
@@ -54,3 +54,15 @@ FEINT = {
     'priority': 2,
     'flags': ['breaks_protect']
 }
+
+THUNDER_WAVE = {
+    'name': 'Thunder Wave',
+    'power': 0,
+    'accuracy': 90,
+    'type_': 'electric',
+    'category': 'status',
+    'power_points': 32,
+    'priority': 0,
+    'flags': ['paralysis']
+}
+

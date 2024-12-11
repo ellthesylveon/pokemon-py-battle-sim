@@ -7,7 +7,7 @@ from moves import *
 path_to_this_directory = os.path.dirname(os.path.abspath(__file__))
 csv_path = os.path.join(path_to_this_directory, 'pokedex.csv')
 
-def create_pokedex() -> list[dict[str, str | int]]:
+def create_pokedex() -> list[dict[str, str | int | dict[str, bool]]]:
     pokedex = []
 
     print('Loading pokedex data...')
@@ -29,6 +29,11 @@ def create_pokedex() -> list[dict[str, str | int]]:
         if len(line[3]) > 0:
             dex_entry['type_'].append(line[3])
 
+        if 'electric' in dex_entry['type_']:
+            dex_entry.update({'paralysis_immune': True})
+        else:
+            dex_entry.update({'paralysis_immune': False})
+
         pokedex.append(dex_entry)
 
     file.close()
@@ -40,7 +45,7 @@ def create_pokedex() -> list[dict[str, str | int]]:
 def create_pokemon(pokemon: dict[str, str | int | list[str | int]]) -> dict[str, str | int | list]:
     evs:list[int] = []
     ivs: list[int] = []
-    moves: list[dict[str, str | int | list[str]]] = [FEINT, PROTECT, PSYCHIC, EARTHQUAKE]
+    moves: list[dict[str, str | int | list[str]]] = [THUNDER_WAVE, PROTECT, PSYCHIC, EARTHQUAKE]
     while len(ivs) < 6:
         user_input = input('Please enter your pokemon\'s IVs in order of HP, Atk, Def, SpAtk, SpDef, Spe. Leave blank for all 31s. ')
         if user_input == '':
@@ -60,5 +65,9 @@ def create_pokemon(pokemon: dict[str, str | int | list[str | int]]) -> dict[str,
     pokemon.update({'level': 100})
     pokemon.update({'moves': moves})
     pokemon.update({'is_protected': False})
+    pokemon.update({'is_paralyzed': False})
+    pokemon.update({'is_burned': False})
+    pokemon.update({'is_statused': False})
+    pokemon.update({'is_confused': False})
 
     return pokemon

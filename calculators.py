@@ -7,6 +7,7 @@ def damage_calc(rel_atk: int, rel_def: int, level: int, power: int | float, dama
                         (random.randint(85, 100) / 100))
 
     damage *= damage_modifier
+
     return damage
 
 
