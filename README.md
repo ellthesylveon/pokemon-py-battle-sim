@@ -6,7 +6,7 @@ TODO:
 - implement abilities
 - implement all moves
 - implement move secondary effects
-- implement status conditions
+- implement status conditions (para finished)
 - implement graphics
 - implement online multiplayer (maybe)
 - more stuff as i think of it
