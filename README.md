@@ -1,6 +1,6 @@
 GOAL: A highly-extensible Pokemon battle simulator, with the ability for the end user to easily add their own abilities, moves, Pokemon, items, etc. Ideally it will be simple to adapt it to a graphical interface and to set up PvP battles. I'm not trying to run Showdown out of business, just trying to fill a niche.
 
-PROGRESS: Damage has all appropriate type modifications, speed and priority are implemented, as is protect. Battles don't end because I can't figure out how to configure the while loop right this moment.
+PROGRESS: Damage has all appropriate type modifications, speed and priority are implemented, as is protect. Stat mods are implemented, as are Swords Dance and Nasty Plot to test as such. The included Mew vs Pikachu demo illustrates as much thanks to a non-boosted Psychic doing only 80-94.3%, but a boosted Psychic always taking a KO. 
 
 TODO:
 - implement abilities

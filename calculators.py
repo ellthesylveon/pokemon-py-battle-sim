@@ -11,7 +11,7 @@ def damage_calc(rel_atk: int, rel_def: int, level: int, power: int | float, dama
     return damage
 
 
-def calculate_stats(pokemon: dict[str, str | int | list[str | int]]) -> dict[str, str | int | list[str | int]]:
+def calculate_stats(pokemon: dict[str, str | int | list[str | int | float]]) -> dict[str, str | int | list[str | int | float]]:
     temp_base = [pokemon['base_hp'], pokemon['base_atk'], pokemon['base_def'], pokemon['base_spatk'], pokemon['base_spdef'], pokemon['base_spe']]
     hp_stat: int = 1 if pokemon['name'] == 'Shedinja' else mt.floor(
         ((2 * pokemon['base_hp'] + pokemon['ivs'][0] + mt.floor(pokemon['evs'][0] / 4)) * pokemon['level'] / 100) + pokemon['level'] + 10)

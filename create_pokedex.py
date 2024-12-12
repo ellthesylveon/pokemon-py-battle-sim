@@ -42,10 +42,10 @@ def create_pokedex() -> list[dict[str, str | int | dict[str, bool]]]:
     return pokedex
 
 
-def create_pokemon(pokemon: dict[str, str | int | list[str | int]]) -> dict[str, str | int | list]:
+def create_pokemon(pokemon: dict[str, str | int | list[str | int]]) -> dict[str, str | int | list[int | float]]:
     evs:list[int] = []
     ivs: list[int] = []
-    moves: list[dict[str, str | int | list[str]]] = [THUNDER_WAVE, PROTECT, PSYCHIC, EARTHQUAKE]
+    moves: list[dict[str, str | int | list[str]]] = [NASTY_PLOT, SWORDS_DANCE, PSYCHIC, EARTHQUAKE]
     while len(ivs) < 6:
         user_input = input('Please enter your pokemon\'s IVs in order of HP, Atk, Def, SpAtk, SpDef, Spe. Leave blank for all 31s. ')
         if user_input == '':
@@ -69,5 +69,6 @@ def create_pokemon(pokemon: dict[str, str | int | list[str | int]]) -> dict[str,
     pokemon.update({'is_burned': False})
     pokemon.update({'is_statused': False})
     pokemon.update({'is_confused': False})
+    pokemon.update({'stat_stage': [1.0, 1.0, 1.0, 1.0, 1.0]}) # [atk, def, sp.atk, sp.def, spe]
 
     return pokemon
