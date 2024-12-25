@@ -1,6 +1,6 @@
+from type_aliases import Move
 
-
-POUND = {
+POUND: Move = {
     'name': 'Pound',
     'power': 40,
     'accuracy': 100,
@@ -13,7 +13,7 @@ POUND = {
     'boost_category': '',
 }
 
-PROTECT = {
+PROTECT: Move = {
     'name': 'Protect',
     'power': 0,
     'accuracy': 100,
@@ -26,7 +26,7 @@ PROTECT = {
     'boost_category': '',
 }
 
-PSYCHIC = {
+PSYCHIC: Move = {
     'name': 'Psychic',
     'power': 90,
     'accuracy': 100,
@@ -39,7 +39,7 @@ PSYCHIC = {
     'boost_category': '',
 }
 
-EARTHQUAKE = {
+EARTHQUAKE: Move = {
     'name': 'Earthquake',
     'power': 100,
     'accuracy': 100,
@@ -52,7 +52,7 @@ EARTHQUAKE = {
     'boost_category': '',
 }
 
-FEINT = {
+FEINT: Move = {
     'name': 'Feint',
     'power': 30,
     'accuracy': 100,
@@ -65,7 +65,7 @@ FEINT = {
     'boost_category': '',
 }
 
-THUNDER_WAVE = {
+THUNDER_WAVE: Move = {
     'name': 'Thunder Wave',
     'power': 0,
     'accuracy': 90,
@@ -78,7 +78,7 @@ THUNDER_WAVE = {
     'boost_category': '',
 }
 
-SWORDS_DANCE = {
+SWORDS_DANCE: Move = {
     'name': 'Swords Dance',
     'power': 0,
     'accuracy': 101,
@@ -91,7 +91,7 @@ SWORDS_DANCE = {
     'boost_category': 'attack sharply rose!',
 }
 
-NASTY_PLOT = {
+NASTY_PLOT: Move = {
     'name': 'Nasty Plot',
     'power': 0,
     'accuracy': 101,

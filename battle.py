@@ -1,11 +1,11 @@
 import copy
 
-from typechart import *
 from calculators import *
-from moves import *
+from type_aliases import Move
+from typechart import *
 
 
-def is_alive(pokemon: dict[str, str | int | list[str | int | float]]) -> bool:
+def is_alive(pokemon: Pokemon) -> bool:
     if pokemon['current_hp'] > 0:
         return True
     else:
@@ -13,7 +13,7 @@ def is_alive(pokemon: dict[str, str | int | list[str | int | float]]) -> bool:
         return False
 
 
-def create_type_chart(pokemon: dict[str, str | int | list[str | int | float]]) -> dict[str, int]:
+def create_type_chart(pokemon: Pokemon) -> dict[str, int]:
     type_chart = copy.deepcopy(expanded_type_chart[pokemon['type_'][0]])
     if len(pokemon['type_']) > 1:
         second_type_chart = expanded_type_chart[pokemon['type_'][1]]
@@ -25,7 +25,7 @@ def create_type_chart(pokemon: dict[str, str | int | list[str | int | float]]) -
     return type_chart
 
 
-def battle(player: dict[str, str | int | list[str | int]], opponent: dict[str, str | int | list[str|int]]) -> None:
+def battle(player: Pokemon, opponent: Pokemon) -> None:
     calculate_stats(player)
     calculate_stats(opponent)
     player_speed: int = round(player['stats'][5] * player['stat_stage'][4])
@@ -46,7 +46,7 @@ def battle(player: dict[str, str | int | list[str | int]], opponent: dict[str, s
                          player['moves'][3]]
             # for move in player1_move_list:
             #     delimiter = ', '
-            move_list_str = 'Nasty Plot, Swords Dance, Psychic, Earthquake'
+            move_list_str = 'Nasty Plot, Protect, Psychic, Earthquake'
             print(move_list_str)
             user_input = input()
             if user_input == '1':
@@ -67,9 +67,9 @@ def battle(player: dict[str, str | int | list[str | int]], opponent: dict[str, s
                                  opponent['moves'][3]]
             # for move in player2_move_list:
             #     delimiter = ', '
-            move_list_str = 'Nasty Plot, Swords Dance, Psychic, Earthquake'
+            move_list_str: str = 'Nasty Plot, Swords Dance, Psychic, Earthquake'
             print(move_list_str)
-            user_input = input()
+            user_input: str = input()
             if user_input == '1':
                 player2_move, valid_input = player['moves'][0], True
             elif user_input == '2':
@@ -89,7 +89,7 @@ def battle(player: dict[str, str | int | list[str | int]], opponent: dict[str, s
             opponent_speed: int = round(opponent['stats'][5] * opponent['stat_stage'][4])
 
         if player_speed == opponent_speed and player1_move['priority'] == player2_move['priority']:
-            coin_flip = random.randint(0, 1)
+            coin_flip: int = random.randint(0, 1)
             match coin_flip:
                 case 0:
                     if not paralysis_check(player):
@@ -127,9 +127,9 @@ def battle(player: dict[str, str | int | list[str | int]], opponent: dict[str, s
                     break
 
 
-def attack(pokemon: dict[str, str | int | list[str | int | float] | dict[str, bool]], move: dict[str, str | int | dict[str, bool] | None], target: dict[str, str | int | list[str|int]], turn_counter: int) -> None:
+def attack(pokemon: Pokemon, move: Move, target: Pokemon) -> None:
 
-    target_max_hp = target['stats'][0]
+    target_max_hp: int = target['stats'][0]
 
     print(f'{pokemon['name']} used {move['name']}!')
 
@@ -142,7 +142,7 @@ def attack(pokemon: dict[str, str | int | list[str | int | float] | dict[str, bo
         target['stat_stage'][0] -= move['boost_amount'][0]
         target['stat_stage'][1] -= move['boost_amount'][1]
         target['stat_stage'][2] -= move['boost_amount'][2]
-        target['stat_stage'][4] -= move['boost_amount'][3]
+        target['stat_stage'][3] -= move['boost_amount'][3]
         target['stat_stage'][4] -= move['boost_amount'][4]
         print(f'{pokemon['name']}\'s {move['boost_category']}')
     
@@ -155,7 +155,13 @@ def attack(pokemon: dict[str, str | int | list[str | int | float] | dict[str, bo
             rel_atk, rel_def = 0, 1
 
     if 'protects' in move['flags']:
-        pokemon.update({'is_protected': True})
+        if 1 / (3 ** pokemon['protected_turns']) < 1 and 1 / (3 ** pokemon['protected_turns']) < random.randint(1,3) / 3:
+            print('But it failed!')
+            pokemon['protected_turns'] = 0
+        else:
+            pokemon.update({'is_protected': True})
+            pokemon['protected_turns'] += 1
+
     elif move['accuracy'] < 100 and random.randint(0, 100) > move['accuracy']:
         print(f'{pokemon['name']}\'s attack missed!')
     else:
@@ -204,7 +210,10 @@ def attack(pokemon: dict[str, str | int | list[str | int | float] | dict[str, bo
     if target['is_protected']:
         target.update({'is_protected': False})
 
-def paralysis_check(pokemon: dict[str, str | int | list[str | int | float] | dict[str, bool]]) -> bool:
+    pokemon.update({'last_used_move': move['name']})
+
+
+def paralysis_check(pokemon: Pokemon) -> bool:
     if pokemon['is_paralyzed'] and random.randint(1, 100) < 26:
         print(f'{pokemon['name']}\'s fully paralyzed!')
         return True

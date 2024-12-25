@@ -2,6 +2,7 @@ import csv
 import os
 
 from moves import *
+from type_aliases import Pokemon
 
 
 path_to_this_directory = os.path.dirname(os.path.abspath(__file__))
@@ -42,10 +43,10 @@ def create_pokedex() -> list[dict[str, str | int | dict[str, bool]]]:
     return pokedex
 
 
-def create_pokemon(pokemon: dict[str, str | int | list[str | int]]) -> dict[str, str | int | list[int | float]]:
+def create_pokemon(pokemon: Pokemon) -> Pokemon:
     evs:list[int] = []
     ivs: list[int] = []
-    moves: list[dict[str, str | int | list[str]]] = [NASTY_PLOT, SWORDS_DANCE, PSYCHIC, EARTHQUAKE]
+    moves: list[dict[str, str | int | list[str]]] = [NASTY_PLOT, PROTECT, PSYCHIC, EARTHQUAKE]
     while len(ivs) < 6:
         user_input = input('Please enter your pokemon\'s IVs in order of HP, Atk, Def, SpAtk, SpDef, Spe. Leave blank for all 31s. ')
         if user_input == '':
@@ -70,5 +71,6 @@ def create_pokemon(pokemon: dict[str, str | int | list[str | int]]) -> dict[str,
     pokemon.update({'is_statused': False})
     pokemon.update({'is_confused': False})
     pokemon.update({'stat_stage': [1.0, 1.0, 1.0, 1.0, 1.0]}) # [atk, def, sp.atk, sp.def, spe]
+    pokemon.update({'protected_turns': 0})
 
     return pokemon
